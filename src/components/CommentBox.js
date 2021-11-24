@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from 'actions'
 
@@ -27,17 +27,19 @@ class CommentBox extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const { comment } = this.state;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h4>Add a Comment</h4>
-                <textarea type="text" value={comment} onChange={this.handleChange}>
-                </textarea>
-                <div>
-                    <button>Submit Comment</button>
-                </div>
-            </form>
+            <>
+                <form onSubmit={this.handleSubmit}>
+                    <h4>Add a Comment</h4>
+                    <textarea type="text" value={comment} onChange={this.handleChange}>
+                    </textarea>
+                    <div>
+                        <button>Submit Comment</button>
+                    </div>
+                </form>
+                <button className="fetch-comments" onClick={this.props.fetchComments}>Fetch Comments</button>
+            </>
         )
     }
 }
